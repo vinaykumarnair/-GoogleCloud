@@ -43,3 +43,7 @@ Pick cloud project to use:
 Please enter numeric choice or text value (must exactly match list 
 item):  2
 
+#### PIP install Google SDK package
+pip3 install --upgrade google-cloud-storage
+
+
