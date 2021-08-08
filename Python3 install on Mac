@@ -1,0 +1,9 @@
+Go to https://www.python.org
+####Download latest python
+
+####check version 
+python3 --v
+
+####update pip 
+pip3 install --upgrade pip
+
