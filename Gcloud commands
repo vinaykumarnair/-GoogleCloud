@@ -1,0 +1,19 @@
+####Set project id
+gcloud config set project <PROJECTID>
+
+####get help
+gcloud help -- SEARCH_TERMS 
+
+####create service account 
+gcloud iam service-accounts create <NAME>
+
+####Update Service account
+gcloud iam service-accounts update \
+            automation@vinay-project-01.iam.gserviceaccount.com \
+            --description="Storage Admin" \
+            --display-name="Automation"
+
+####create keys for the service account
+gcloud iam service-accounts keys create OUTPUT-FILE\
+        --iam-account=automation@vinay-project-01.iam.gserviceaccount.com\
+        --key-file-type="json"; 
