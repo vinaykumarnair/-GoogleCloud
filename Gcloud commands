@@ -9,11 +9,20 @@ gcloud iam service-accounts create <NAME>
 
 ####Update Service account
 gcloud iam service-accounts update \
-            automation@vinay-project-01.iam.gserviceaccount.com \
+            automator2@vinay-project-01.iam.gserviceaccount.com \
             --description="Storage Admin" \
             --display-name="Automation"
 
+####Bind role
+gcloud projects add-iam-policy-binding vinay-project-01 \
+    --member="serviceAccount:automator2@vinay-project-01.iam.gserviceaccount.com" \
+    --role="roles/storage.admin"
+
 ####create keys for the service account
-gcloud iam service-accounts keys create OUTPUT-FILE\
-        --iam-account=automation@vinay-project-01.iam.gserviceaccount.com\
+gcloud iam service-accounts keys create vinay-profile.json\
+        --iam-account=automator2@vinay-project-01.iam.gserviceaccount.com\
         --key-file-type="json"; 
+        
+        
+        
+detail webpage: https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-gcloud
