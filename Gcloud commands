@@ -20,9 +20,20 @@ gcloud projects add-iam-policy-binding vinay-project-01 \
 
 ####create keys for the service account
 gcloud iam service-accounts keys create vinay-profile.json\
-        --iam-account=automator2@vinay-project-01.iam.gserviceaccount.com\
+        --iam-account=automator@vinay-project-01.iam.gserviceaccount.com\
         --key-file-type="json"; 
         
+####create bucket
+gcloud logging buckets create my-bucket --location=global
         
-        
+
+####Create VM on Google Cloud
+gcloud compute instances create vinay-vm-01 vinay-vm-02 vinay-vm-03
+
+
+
+
 detail webpage: https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-gcloud
+
+
+
