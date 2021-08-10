@@ -49,5 +49,8 @@ pip3 install --upgrade google-cloud-storage
 #### PIP install Google API python client
 pip install --upgrade google-api-python-client
 
+####Enable API
+gcloud services enable pubsub.googleapis.com
 
+gcloud auth application-default login
 
