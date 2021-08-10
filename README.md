@@ -2,14 +2,20 @@
 Code for GCloud 
 
 **# Pre requisation for the Challenges
-1) Install Python on local machine
-2) Install Google SDK for Python
-3) Install Google SDK on local machine
+1) Install Python on local machine   
+https://github.com/vinaykumarnair/-GoogleCloud/blob/10dbe3a3145da7775dacf646a4afd580ba84aae2/Python3%20install%20on%20Mac
+
+2) Install Google SDK for Python 
+3) Install Google SDK on local machine 
+https://github.com/vinaykumarnair/-GoogleCloud/blob/10dbe3a3145da7775dacf646a4afd580ba84aae2/Google%20SDK%20on%20MAC
+
 4) Create new project using GCloud on google shell
 5) Create new service account using GCloud on google shell
 6) Update Serivce account name and description using GCloud on google shell
 7) Bind role to the service account using GCloud
 8) Add key to the service account
+
+**Note: All Gcloud commands are here** https://github.com/vinaykumarnair/-GoogleCloud/blob/10dbe3a3145da7775dacf646a4afd580ba84aae2/Gcloud%20commands
 
 
 
