@@ -1,3 +1,6 @@
+####create project
+gcloud projects create <PROJECT ID>
+
 ####Set project id
 gcloud config set project <PROJECTID>
 
@@ -31,7 +34,8 @@ gcloud logging buckets create my-bucket --location=global
 gcloud compute instances create vinay-vm-01 vinay-vm-02 vinay-vm-03
 
 
-
+#### Delete project from Gcloud
+gcloud projects delete <PROJECT ID>
 
 detail webpage: https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-gcloud
 
