@@ -1,0 +1,5 @@
+gcloud auth list
+gcloud config set account 'ACCOUNT'
+gcloud config list project
+gcloud auth activate-service-account ACCOUNT
+gcloud beta compute ssh --zone "us-central1-a" "gcelab"  --project "qwiklabs-gcp-01-9473101189b4"
