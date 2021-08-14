@@ -5,5 +5,15 @@ gcloud compute networks create vin-vpn-01 --project=vinay-proj-01 --description=
 ###command for creating subnet
 gcloud compute networks subnets create vin-subnet-01 --project=vinay-proj-01 --description=firstsubnet --range=10.0.0.0/9 --network=vin-vpn-01 --region=asia-east1
 
+### list networks(VPN)
+gcloud compute networks list
+
+### list subnets
+gcloud compute networks subnets list --network=vin-vpn-01
+
 ###IPV4 CIDR and VPC for dummies
 https://www.youtube.com/watch?v=z07HTSzzp3o
+
+###delete network(vpn)
+cloud compute networks delete vin-vpn-02 --project=vinay-proj-01
+
