@@ -37,6 +37,11 @@ gcloud compute instances create vinay-vm-01 vinay-vm-02 vinay-vm-03
 #### Delete project from Gcloud
 gcloud projects delete <PROJECT ID>
 
+####billing accountlinking
+gcloud beta billing projects link vinay-proj-02 \
+            --billing-account <billing acct name>
+
+
 detail webpage: https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-gcloud
 
 
