@@ -1,0 +1,9 @@
+
+###command for creating vpn
+gcloud compute networks create vin-vpn-01 --project=vinay-proj-01 --description=firstvpn --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
+
+###command for creating subnet
+gcloud compute networks subnets create vin-subnet-01 --project=vinay-proj-01 --description=firstsubnet --range=10.0.0.0/9 --network=vin-vpn-01 --region=asia-east1
+
+###IPV4 CIDR and VPC for dummies
+https://www.youtube.com/watch?v=z07HTSzzp3o
