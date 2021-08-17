@@ -1,0 +1,52 @@
+####Create project 
+gcloud projects create tcb-gcp-aws-323213
+
+####set current project to same project
+gcloud config set project tcb-gcp-aws-323213 
+
+####billing accountlinking
+gcloud beta billing projects link tcb-gcp-aws-323213 \
+            --billing-account <billing acct name>
+
+
+####Enable API
+gcloud services enable pubsub.googleapis.com               
+
+
+####create service accounts for GCP
+gcloud IAM service accounts create automator2
+
+####Update Service account
+gcloud iam service-accounts update \
+            automator2@tcb-gcp-aws-323213.iam.gserviceaccount.com \
+            --description="Storage Admin" \
+            --display-name="Automation"
+
+####bind a role to the account
+gcloud projects add-iam-policy-binding tcb-gcp-aws-323213 \
+    --member="serviceAccount:automator2@tcb-gcp-aws-323213.iam.gserviceaccount.com" \
+    --role="roles/storage.admin"
+    
+####create keys for the service account
+gcloud iam service-accounts keys create vinay-profile.json\
+        --iam-account=automator2@tcb-gcp-aws-323213.iam.gserviceaccount.com\
+        --key-file-type="json"; 
+        
+####to copy key from GCP use this command
+gcloud cloud-shell scp cloudshell:~/vinay-profile.json \   
+          localhost:/Users/vinaynair/hands-on-tcb-bmc-gcp/
+
+####Not: Above key is produced through your local terminal , so it will be on your local directory
+
+
+####create aws service account
+aws-programatic
+
+
+#### get terraform
+./get_terraform.sh
+##set path
+export PATH=/Users/vinaynair/terraform:${PATH}
+
+
+
