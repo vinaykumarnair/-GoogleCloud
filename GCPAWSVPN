@@ -1,12 +1,12 @@
 ####Create project 
-gcloud projects create tcb-gcp-aws-323213
+gcloud projects create tcb-gcp-aws-323213. tcb-gcp-aws-323315
 
 ####set current project to same project
 gcloud config set project tcb-gcp-aws-323213 
 
 ####billing accountlinking
 gcloud beta billing projects link tcb-gcp-aws-323213 \
-            --billing-account <billing acct name>
+            --billing-account 
 
 
 ####Enable API
