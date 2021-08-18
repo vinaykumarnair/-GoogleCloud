@@ -1,0 +1,762 @@
+Terraform will perform the following actions:
+
+  # aws_customer_gateway.aws-cgw will be created
+  + resource "aws_customer_gateway" "aws-cgw" {
+      + bgp_asn    = 65000
+      + id         = (known after apply)
+      + ip_address = (known after apply)
+      + tags       = {
+          + "Name" = "aws-customer-gw"
+        }
+      + type       = "ipsec.1"
+    }
+
+  # aws_default_route_table.aws-vpc will be created
+  + resource "aws_default_route_table" "aws-vpc" {
+      + default_route_table_id = (known after apply)
+      + id                     = (known after apply)
+      + owner_id               = (known after apply)
+      + propagating_vgws       = (known after apply)
+      + route                  = [
+          + {
+              + cidr_block                = "0.0.0.0/0"
+              + egress_only_gateway_id    = ""
+              + gateway_id                = (known after apply)
+              + instance_id               = ""
+              + ipv6_cidr_block           = ""
+              + nat_gateway_id            = ""
+              + network_interface_id      = ""
+              + transit_gateway_id        = ""
+              + vpc_peering_connection_id = ""
+            },
+        ]
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_eip.aws-ip will be created
+  + resource "aws_eip" "aws-ip" {
+      + allocation_id             = (known after apply)
+      + associate_with_private_ip = "172.16.0.100"
+      + association_id            = (known after apply)
+      + domain                    = (known after apply)
+      + id                        = (known after apply)
+      + instance                  = (known after apply)
+      + network_interface         = (known after apply)
+      + private_dns               = (known after apply)
+      + private_ip                = (known after apply)
+      + public_dns                = (known after apply)
+      + public_ip                 = (known after apply)
+      + public_ipv4_pool          = (known after apply)
+      + vpc                       = true
+    }
+
+  # aws_instance.tcb-aws-vm-01 will be created
+  + resource "aws_instance" "tcb-aws-vm-01" {
+      + ami                          = "ami-079e7a3f57cc8e0d0"
+      + arn                          = (known after apply)
+      + associate_public_ip_address  = true
+      + availability_zone            = (known after apply)
+      + cpu_core_count               = (known after apply)
+      + cpu_threads_per_core         = (known after apply)
+      + get_password_data            = false
+      + host_id                      = (known after apply)
+      + id                           = (known after apply)
+      + instance_state               = (known after apply)
+      + instance_type                = "t3.micro"
+      + ipv6_address_count           = (known after apply)
+      + ipv6_addresses               = (known after apply)
+      + key_name                     = "vm-ssh-key"
+      + network_interface_id         = (known after apply)
+      + outpost_arn                  = (known after apply)
+      + password_data                = (known after apply)
+      + placement_group              = (known after apply)
+      + primary_network_interface_id = (known after apply)
+      + private_dns                  = (known after apply)
+      + private_ip                   = "172.16.0.100"
+      + public_dns                   = (known after apply)
+      + public_ip                    = (known after apply)
+      + security_groups              = (known after apply)
+      + source_dest_check            = true
+      + subnet_id                    = (known after apply)
+      + tags                         = {
+          + "Name" = "tcb-aws-vm-01"
+        }
+      + tenancy                      = (known after apply)
+      + user_data                    = (known after apply)
+      + volume_tags                  = (known after apply)
+      + vpc_security_group_ids       = (known after apply)
+
+      + ebs_block_device {
+          + delete_on_termination = (known after apply)
+          + device_name           = (known after apply)
+          + encrypted             = (known after apply)
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + snapshot_id           = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = (known after apply)
+        }
+
+      + ephemeral_block_device {
+          + device_name  = (known after apply)
+          + no_device    = (known after apply)
+          + virtual_name = (known after apply)
+        }
+
+      + metadata_options {
+          + http_endpoint               = (known after apply)
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = (known after apply)
+        }
+
+      + network_interface {
+          + delete_on_termination = (known after apply)
+          + device_index          = (known after apply)
+          + network_interface_id  = (known after apply)
+        }
+
+      + root_block_device {
+          + delete_on_termination = (known after apply)
+          + device_name           = (known after apply)
+          + encrypted             = (known after apply)
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = (known after apply)
+        }
+    }
+
+  # aws_internet_gateway.aws-vpc-igw will be created
+  + resource "aws_internet_gateway" "aws-vpc-igw" {
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + tags     = {
+          + "Name" = "aws-vpc-igw"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # aws_security_group.aws-allow-icmp will be created
+  + resource "aws_security_group" "aws-allow-icmp" {
+      + arn                    = (known after apply)
+      + description            = "Allow icmp access from anywhere"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = ""
+              + from_port        = 8
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "icmp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + name                   = "aws-allow-icmp"
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group.aws-allow-internet will be created
+  + resource "aws_security_group" "aws-allow-internet" {
+      + arn                    = (known after apply)
+      + description            = "Allow http traffic from the internet"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = ""
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = ""
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+            },
+        ]
+      + name                   = "aws-allow-internet"
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group.aws-allow-ssh will be created
+  + resource "aws_security_group" "aws-allow-ssh" {
+      + arn                    = (known after apply)
+      + description            = "Allow ssh access from anywhere"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = ""
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+        ]
+      + name                   = "aws-allow-ssh"
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group.aws-allow-vpn will be created
+  + resource "aws_security_group" "aws-allow-vpn" {
+      + arn                    = (known after apply)
+      + description            = "Allow all traffic from vpn resources"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "10.88.0.0/24",
+                ]
+              + description      = ""
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + name                   = "aws-allow-vpn"
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_subnet.tcb-aws-subnet1 will be created
+  + resource "aws_subnet" "tcb-aws-subnet1" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = (known after apply)
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "172.16.0.0/24"
+      + id                              = (known after apply)
+      + ipv6_cidr_block                 = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = false
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "Name" = "tcb-aws-subnet1"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # aws_vpc.tcb-aws-vpc will be created
+  + resource "aws_vpc" "tcb-aws-vpc" {
+      + arn                              = (known after apply)
+      + assign_generated_ipv6_cidr_block = false
+      + cidr_block                       = "172.16.0.0/16"
+      + default_network_acl_id           = (known after apply)
+      + default_route_table_id           = (known after apply)
+      + default_security_group_id        = (known after apply)
+      + dhcp_options_id                  = (known after apply)
+      + enable_classiclink               = (known after apply)
+      + enable_classiclink_dns_support   = (known after apply)
+      + enable_dns_hostnames             = true
+      + enable_dns_support               = true
+      + id                               = (known after apply)
+      + instance_tenancy                 = "default"
+      + ipv6_association_id              = (known after apply)
+      + ipv6_cidr_block                  = (known after apply)
+      + main_route_table_id              = (known after apply)
+      + owner_id                         = (known after apply)
+      + tags                             = {
+          + "Name" = "tcb-aws-vpc"
+        }
+    }
+
+  # aws_vpn_connection.aws-vpn-connection1 will be created
+  + resource "aws_vpn_connection" "aws-vpn-connection1" {
+      + customer_gateway_configuration = (known after apply)
+      + customer_gateway_id            = (known after apply)
+      + id                             = (known after apply)
+      + routes                         = (known after apply)
+      + static_routes_only             = false
+      + tags                           = {
+          + "Name" = "aws-vpn-connection1"
+        }
+      + transit_gateway_attachment_id  = (known after apply)
+      + tunnel1_address                = (known after apply)
+      + tunnel1_bgp_asn                = (known after apply)
+      + tunnel1_bgp_holdtime           = (known after apply)
+      + tunnel1_cgw_inside_address     = (known after apply)
+      + tunnel1_inside_cidr            = (known after apply)
+      + tunnel1_preshared_key          = (sensitive value)
+      + tunnel1_vgw_inside_address     = (known after apply)
+      + tunnel2_address                = (known after apply)
+      + tunnel2_bgp_asn                = (known after apply)
+      + tunnel2_bgp_holdtime           = (known after apply)
+      + tunnel2_cgw_inside_address     = (known after apply)
+      + tunnel2_inside_cidr            = (known after apply)
+      + tunnel2_preshared_key          = (sensitive value)
+      + tunnel2_vgw_inside_address     = (known after apply)
+      + type                           = "ipsec.1"
+      + vgw_telemetry                  = (known after apply)
+      + vpn_gateway_id                 = (known after apply)
+    }
+
+  # aws_vpn_gateway.aws-vpn-gw will be created
+  + resource "aws_vpn_gateway" "aws-vpn-gw" {
+      + amazon_side_asn = (known after apply)
+      + id              = (known after apply)
+      + vpc_id          = (known after apply)
+    }
+
+  # google_compute_address.gcp-ip will be created
+  + resource "google_compute_address" "gcp-ip" {
+      + address            = (known after apply)
+      + address_type       = "EXTERNAL"
+      + creation_timestamp = (known after apply)
+      + id                 = (known after apply)
+      + name               = "gcp-vm-ip"
+      + network_tier       = (known after apply)
+      + project            = (known after apply)
+      + purpose            = (known after apply)
+      + region             = "us-west1"
+      + self_link          = (known after apply)
+      + subnetwork         = (known after apply)
+      + users              = (known after apply)
+    }
+
+  # google_compute_address.gcp-vpn-ip will be created
+  + resource "google_compute_address" "gcp-vpn-ip" {
+      + address            = (known after apply)
+      + address_type       = "EXTERNAL"
+      + creation_timestamp = (known after apply)
+      + id                 = (known after apply)
+      + name               = "gcp-vpn-ip"
+      + network_tier       = (known after apply)
+      + project            = (known after apply)
+      + purpose            = (known after apply)
+      + region             = "us-west1"
+      + self_link          = (known after apply)
+      + subnetwork         = (known after apply)
+      + users              = (known after apply)
+    }
+
+  # google_compute_firewall.gcp-allow-icmp will be created
+  + resource "google_compute_firewall" "gcp-allow-icmp" {
+      + creation_timestamp = (known after apply)
+      + destination_ranges = (known after apply)
+      + direction          = (known after apply)
+      + id                 = (known after apply)
+      + name               = "tcb-gcp-network-gcp-allow-icmp"
+      + network            = "tcb-gcp-network"
+      + priority           = 1000
+      + project            = (known after apply)
+      + self_link          = (known after apply)
+      + source_ranges      = [
+          + "0.0.0.0/0",
+        ]
+
+      + allow {
+          + ports    = []
+          + protocol = "icmp"
+        }
+    }
+
+  # google_compute_firewall.gcp-allow-internet will be created
+  + resource "google_compute_firewall" "gcp-allow-internet" {
+      + creation_timestamp = (known after apply)
+      + destination_ranges = (known after apply)
+      + direction          = (known after apply)
+      + id                 = (known after apply)
+      + name               = "tcb-gcp-network-gcp-allow-internet"
+      + network            = "tcb-gcp-network"
+      + priority           = 1000
+      + project            = (known after apply)
+      + self_link          = (known after apply)
+      + source_ranges      = [
+          + "0.0.0.0/0",
+        ]
+
+      + allow {
+          + ports    = [
+              + "80",
+            ]
+          + protocol = "tcp"
+        }
+    }
+
+  # google_compute_firewall.gcp-allow-ssh will be created
+  + resource "google_compute_firewall" "gcp-allow-ssh" {
+      + creation_timestamp = (known after apply)
+      + destination_ranges = (known after apply)
+      + direction          = (known after apply)
+      + id                 = (known after apply)
+      + name               = "tcb-gcp-network-gcp-allow-ssh"
+      + network            = "tcb-gcp-network"
+      + priority           = 1000
+      + project            = (known after apply)
+      + self_link          = (known after apply)
+      + source_ranges      = [
+          + "0.0.0.0/0",
+        ]
+
+      + allow {
+          + ports    = [
+              + "22",
+            ]
+          + protocol = "tcp"
+        }
+    }
+
+  # google_compute_firewall.gcp-allow-vpn will be created
+  + resource "google_compute_firewall" "gcp-allow-vpn" {
+      + creation_timestamp = (known after apply)
+      + destination_ranges = (known after apply)
+      + direction          = (known after apply)
+      + id                 = (known after apply)
+      + name               = "tcb-gcp-network-gcp-allow-vpn"
+      + network            = "tcb-gcp-network"
+      + priority           = 1000
+      + project            = (known after apply)
+      + self_link          = (known after apply)
+      + source_ranges      = [
+          + "172.16.0.0/24",
+        ]
+
+      + allow {
+          + ports    = [
+              + "0-65535",
+            ]
+          + protocol = "tcp"
+        }
+      + allow {
+          + ports    = [
+              + "0-65535",
+            ]
+          + protocol = "udp"
+        }
+    }
+
+  # google_compute_forwarding_rule.fr_esp will be created
+  + resource "google_compute_forwarding_rule" "fr_esp" {
+      + creation_timestamp    = (known after apply)
+      + id                    = (known after apply)
+      + ip_address            = (known after apply)
+      + ip_protocol           = "ESP"
+      + ip_version            = (known after apply)
+      + load_balancing_scheme = "EXTERNAL"
+      + name                  = "fr-esp"
+      + network               = (known after apply)
+      + network_tier          = (known after apply)
+      + project               = (known after apply)
+      + region                = (known after apply)
+      + self_link             = (known after apply)
+      + service_name          = (known after apply)
+      + subnetwork            = (known after apply)
+      + target                = (known after apply)
+    }
+
+  # google_compute_forwarding_rule.fr_udp4500 will be created
+  + resource "google_compute_forwarding_rule" "fr_udp4500" {
+      + creation_timestamp    = (known after apply)
+      + id                    = (known after apply)
+      + ip_address            = (known after apply)
+      + ip_protocol           = "UDP"
+      + ip_version            = (known after apply)
+      + load_balancing_scheme = "EXTERNAL"
+      + name                  = "fr-udp4500"
+      + network               = (known after apply)
+      + network_tier          = (known after apply)
+      + port_range            = "4500-4500"
+      + project               = (known after apply)
+      + region                = (known after apply)
+      + self_link             = (known after apply)
+      + service_name          = (known after apply)
+      + subnetwork            = (known after apply)
+      + target                = (known after apply)
+    }
+
+  # google_compute_forwarding_rule.fr_udp500 will be created
+  + resource "google_compute_forwarding_rule" "fr_udp500" {
+      + creation_timestamp    = (known after apply)
+      + id                    = (known after apply)
+      + ip_address            = (known after apply)
+      + ip_protocol           = "UDP"
+      + ip_version            = (known after apply)
+      + load_balancing_scheme = "EXTERNAL"
+      + name                  = "fr-udp500"
+      + network               = (known after apply)
+      + network_tier          = (known after apply)
+      + port_range            = "500-500"
+      + project               = (known after apply)
+      + region                = (known after apply)
+      + self_link             = (known after apply)
+      + service_name          = (known after apply)
+      + subnetwork            = (known after apply)
+      + target                = (known after apply)
+    }
+
+  # google_compute_instance.tcb-gcp-vm-01 will be created
+  + resource "google_compute_instance" "tcb-gcp-vm-01" {
+      + can_ip_forward          = false
+      + cpu_platform            = (known after apply)
+      + current_status          = (known after apply)
+      + deletion_protection     = false
+      + guest_accelerator       = (known after apply)
+      + id                      = (known after apply)
+      + instance_id             = (known after apply)
+      + label_fingerprint       = (known after apply)
+      + machine_type            = "e2-micro"
+      + metadata_fingerprint    = (known after apply)
+      + metadata_startup_script = (known after apply)
+      + min_cpu_platform        = (known after apply)
+      + name                    = "tcb-gcp-vm-01"
+      + project                 = (known after apply)
+      + self_link               = (known after apply)
+      + tags_fingerprint        = (known after apply)
+      + zone                    = "us-west1-a"
+
+      + boot_disk {
+          + auto_delete                = true
+          + device_name                = (known after apply)
+          + disk_encryption_key_sha256 = (known after apply)
+          + kms_key_self_link          = (known after apply)
+          + mode                       = "READ_WRITE"
+          + source                     = (known after apply)
+
+          + initialize_params {
+              + image  = "projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts"
+              + labels = (known after apply)
+              + size   = (known after apply)
+              + type   = (known after apply)
+            }
+        }
+
+      + network_interface {
+          + name               = (known after apply)
+          + network            = (known after apply)
+          + network_ip         = "10.88.0.100"
+          + subnetwork         = "tcb-gcp-subnet1"
+          + subnetwork_project = (known after apply)
+
+          + access_config {
+              + nat_ip       = (known after apply)
+              + network_tier = (known after apply)
+            }
+        }
+
+      + scheduling {
+          + automatic_restart   = (known after apply)
+          + on_host_maintenance = (known after apply)
+          + preemptible         = (known after apply)
+
+          + node_affinities {
+              + key      = (known after apply)
+              + operator = (known after apply)
+              + values   = (known after apply)
+            }
+        }
+    }
+
+  # google_compute_network.tcb-gcp-network will be created
+  + resource "google_compute_network" "tcb-gcp-network" {
+      + auto_create_subnetworks         = false
+      + delete_default_routes_on_create = false
+      + gateway_ipv4                    = (known after apply)
+      + id                              = (known after apply)
+      + ipv4_range                      = (known after apply)
+      + name                            = "tcb-gcp-network"
+      + project                         = (known after apply)
+      + routing_mode                    = (known after apply)
+      + self_link                       = (known after apply)
+    }
+
+  # google_compute_router.gcp-router1 will be created
+  + resource "google_compute_router" "gcp-router1" {
+      + creation_timestamp = (known after apply)
+      + id                 = (known after apply)
+      + name               = "gcp-router1"
+      + network            = "tcb-gcp-network"
+      + project            = (known after apply)
+      + region             = "us-west1"
+      + self_link          = (known after apply)
+
+      + bgp {
+          + advertise_mode = "DEFAULT"
+          + asn            = 65000
+        }
+    }
+
+  # google_compute_router.gcp-router2 will be created
+  + resource "google_compute_router" "gcp-router2" {
+      + creation_timestamp = (known after apply)
+      + id                 = (known after apply)
+      + name               = "gcp-router2"
+      + network            = "tcb-gcp-network"
+      + project            = (known after apply)
+      + region             = "us-west1"
+      + self_link          = (known after apply)
+
+      + bgp {
+          + advertise_mode = "DEFAULT"
+          + asn            = 65000
+        }
+    }
+
+  # google_compute_router_interface.router_interface1 will be created
+  + resource "google_compute_router_interface" "router_interface1" {
+      + id         = (known after apply)
+      + ip_range   = (known after apply)
+      + name       = "gcp-to-aws-interface1"
+      + project    = (known after apply)
+      + region     = "us-west1"
+      + router     = "gcp-router1"
+      + vpn_tunnel = "gcp-tunnel1"
+    }
+
+  # google_compute_router_interface.router_interface2 will be created
+  + resource "google_compute_router_interface" "router_interface2" {
+      + id         = (known after apply)
+      + ip_range   = (known after apply)
+      + name       = "gcp-to-aws-interface2"
+      + project    = (known after apply)
+      + region     = "us-west1"
+      + router     = "gcp-router2"
+      + vpn_tunnel = "gcp-tunnel2"
+    }
+
+  # google_compute_router_peer.gcp-router1-peer will be created
+  + resource "google_compute_router_peer" "gcp-router1-peer" {
+      + advertise_mode  = "DEFAULT"
+      + id              = (known after apply)
+      + interface       = "gcp-to-aws-interface1"
+      + ip_address      = (known after apply)
+      + management_type = (known after apply)
+      + name            = "gcp-to-aws-bgp1"
+      + peer_asn        = 64512
+      + peer_ip_address = (known after apply)
+      + project         = (known after apply)
+      + region          = "us-west1"
+      + router          = "gcp-router1"
+    }
+
+  # google_compute_router_peer.gcp-router2-peer will be created
+  + resource "google_compute_router_peer" "gcp-router2-peer" {
+      + advertise_mode  = "DEFAULT"
+      + id              = (known after apply)
+      + interface       = "gcp-to-aws-interface2"
+      + ip_address      = (known after apply)
+      + management_type = (known after apply)
+      + name            = "gcp-to-aws-bgp2"
+      + peer_asn        = 64512
+      + peer_ip_address = (known after apply)
+      + project         = (known after apply)
+      + region          = "us-west1"
+      + router          = "gcp-router2"
+    }
+
+  # google_compute_subnetwork.tcb-gcp-subnet1 will be created
+  + resource "google_compute_subnetwork" "tcb-gcp-subnet1" {
+      + creation_timestamp = (known after apply)
+      + enable_flow_logs   = (known after apply)
+      + fingerprint        = (known after apply)
+      + gateway_address    = (known after apply)
+      + id                 = (known after apply)
+      + ip_cidr_range      = "10.88.0.0/24"
+      + name               = "tcb-gcp-subnet1"
+      + network            = "tcb-gcp-network"
+      + project            = (known after apply)
+      + region             = "us-west1"
+      + secondary_ip_range = (known after apply)
+      + self_link          = (known after apply)
+    }
+
+  # google_compute_vpn_gateway.gcp-vpn-gw will be created
+  + resource "google_compute_vpn_gateway" "gcp-vpn-gw" {
+      + creation_timestamp = (known after apply)
+      + gateway_id         = (known after apply)
+      + id                 = (known after apply)
+      + name               = "gcp-vpn-gw-us-west1"
+      + network            = "tcb-gcp-network"
+      + project            = (known after apply)
+      + region             = "us-west1"
+      + self_link          = (known after apply)
+    }
+
+  # google_compute_vpn_tunnel.gcp-tunnel1 will be created
+  + resource "google_compute_vpn_tunnel" "gcp-tunnel1" {
+      + creation_timestamp      = (known after apply)
+      + detailed_status         = (known after apply)
+      + id                      = (known after apply)
+      + ike_version             = 1
+      + local_traffic_selector  = (known after apply)
+      + name                    = "gcp-tunnel1"
+      + peer_ip                 = (known after apply)
+      + project                 = (known after apply)
+      + region                  = (known after apply)
+      + remote_traffic_selector = (known after apply)
+      + router                  = "gcp-router1"
+      + self_link               = (known after apply)
+      + shared_secret           = (sensitive value)
+      + shared_secret_hash      = (known after apply)
+      + target_vpn_gateway      = (known after apply)
+      + tunnel_id               = (known after apply)
+    }
+
+  # google_compute_vpn_tunnel.gcp-tunnel2 will be created
+  + resource "google_compute_vpn_tunnel" "gcp-tunnel2" {
+      + creation_timestamp      = (known after apply)
+      + detailed_status         = (known after apply)
+      + id                      = (known after apply)
+      + ike_version             = 1
+      + local_traffic_selector  = (known after apply)
+      + name                    = "gcp-tunnel2"
+      + peer_ip                 = (known after apply)
+      + project                 = (known after apply)
+      + region                  = (known after apply)
+      + remote_traffic_selector = (known after apply)
+      + router                  = "gcp-router2"
+      + self_link               = (known after apply)
+      + shared_secret           = (sensitive value)
+      + shared_secret_hash      = (known after apply)
+      + target_vpn_gateway      = (known after apply)
+      + tunnel_id               = (known after apply)
+    }
+
+Plan: 34 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + aws_instance_external_ip = (known after apply)
+  + aws_instance_internal_ip = "172.16.0.100"
+  + gcp_instance_external_ip = (known after apply)
+  + gcp_instance_internal_ip = "10.88.0.100"
