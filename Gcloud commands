@@ -45,4 +45,12 @@ gcloud beta billing projects link vinay-proj-02 \
 detail webpage: https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-gcloud
 
 
+### run app engine
+git clone https://github.com/GoogleCloudPlatform/python-docs-samples.git
+go to project sub folder and run
+gcloud app deploy app.yaml --version 1
+### see log for the app engine
+gcloud app logs tail -s default
+### get browse url
+gcloud app browse
 
