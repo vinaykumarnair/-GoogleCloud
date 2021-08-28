@@ -54,3 +54,40 @@ gcloud app logs tail -s default
 ### get browse url
 gcloud app browse
 
+###set zones
+gcloud config set compute/zone us-west1-a
+
+###set fire wall tcp:22 SSH
+gcloud compute firewall-rules create allow-ssh --network default --allow tcp:22 --source-ranges 0.0.0.0/0
+
+###set fire wall tcp:80 http
+gcloud compute firewall-rules create allow-http --network default --allow tcp:80 --source-ranges 0.0.0.0/0
+
+### create compute engine
+gcloud compute instances create app-01 --project=$DEVSHELL_PROJECT_ID --zone=us-west1-a --machine-type=n1-standard-1 --subnet=default --scopes="cloud-platform" --tags=http-server,https-server --image=ubuntu-minimal-1604-xenial-v20210119a --image-project=ubuntu-os-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=app-01
+
+###generate SSH key
+ssh-keygen -t rsa -f ~/.ssh/app-key -C [USERNAME]
+chmod 400 ~/.ssh/app-key
+
+ls -l|grep app-key
+
+### set SSH on project
+gcloud compute config-ssh --ssh-key-file=~/.ssh/app_key
+
+###SSH into the server
+ssh app-01.us-west1-a.talent-project-324309
+
+###install appachi and unzip
+sudo apt-get update && sudo apt-get install apache2 unzip -y
+
+###get project
+sudo apt-get update && sudo apt-get install apache2 unzip -ycd /var/www/htmlsudo mv index.html index.html.bkpsudo 
+curl -O https://storage.googleapis.com/bootcamp-gcp-en/hands-on-compute-website-files-en.zipsudo unzip hands-on-compute-website-files-en.zipsudo chmod 644 *
+
+###log off
+sudo poweroff
+
+###installing migrate 4 anthos
+migctl setup install --json-key=tcb-m4a-install.json
+
