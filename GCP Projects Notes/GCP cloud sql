@@ -1,0 +1,47 @@
+dditional Commands:
+
+- Create an GCE VM instance
+
+- Access the VM via SSH
+
+- Install MySQL Client
+
+sudo apt-get update
+
+sudo apt-get install default-mysql-client
+
+- Perform a remote connection to Cloud SQL database from VM:
+
+mysql --host=<PRIVATE_CLOUD_SQL_IP> --user=root --password
+
+
+Create Database | Create Table | Insert rows | Query the table
+
+MySQL>
+
+CREATE DATABASE tcb_db_students;
+
+show databases;
+
+use tcb_db_students;
+
+CREATE TABLE bootcampers(\
+code int(4) AUTO_INCREMENT,
+name varchar(50) NOT NULL,
+cohort varchar(30),
+PRIMARY KEY (code));
+
+show tables;
+
+INSERT INTO bootcampers (code,name,cohort) VALUES (1,"Frank J","2019");
+
+INSERT INTO bootcampers (code,name,cohort) VALUES (2,"Pryia K","2019");
+
+INSERT INTO bootcampers (code,name,cohort) VALUES (3,"David S","2021");
+
+INSERT INTO bootcampers (code,name,cohort) VALUES (4,"Vijay K","2021");
+
+SELECT name FROM bootcampers WHERE cohort LIKE '2021';
+
+
+drop database tcb_db_students;
