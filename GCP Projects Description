@@ -1,0 +1,11 @@
+As part of this program, I had the opportunity to acquire knowledge of the fundamentals of Google Cloud Platform (GCP) and Cloud Computing, in addition to implementing mini-projects based on real-world scenarios, such as:
+
+
+1. Automation in Google Cloud using Python - IAM Service Accounts.
+2. Implementation of private communication in a MultiCloud environment (AWS and GCP) in a 100% automated way using Terraform.
+3. Lift & Shift + Application Modernization: Converting a legacy application to run in containers on Google Kubernetes Engine (GKE) using Anthos.
+4. Migration of Intercontinental VM (USA Region -> Australia Region) using Storage Snapshot through the internal private network of Google Cloud in less than 30 minutes.
+5. Implementation of Cloud Load Balancing between Regions in the USA and Europe for global high availability and intelligent traffic distribution based on user proximity and location.
+6. Migration of Application and Standalone Database in VM (Google Compute Engine) to modern containerized architecture, using the managed services Google Kubernetes Engine (APP) + Cloud SQL (DB) in HA.
+7. Implementation of Corporate Training Portal on Google Cloud Platform using Deployment Manager, Google Compute Engine & Cloud Storage.
+8. Final Project: Implementation of a Web Application to automate talent onboarding using HTML / CSS / JS / BS (Front-end) + Python Flash (Back-end) with Cloud Storage and Cloud Functions 100% Serverless.
